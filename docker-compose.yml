@@ -43,9 +43,18 @@ services:
 #    ports:
 #      - "8761:8761"
 #
+#  users-service:
+#    build: ms-users
+#    container_name: ms-users
+#    restart: always
+#    depends_on:
+#      - keycloak
+#    ports:
+#      - "8084:8084"
+#
 #  bills-service:
 #    build: ms-bills
-#    container_name: eureka-server
+#    container_name: ms-bills
 #    restart: always
 #    depends_on:
 #      - keycloak
@@ -54,9 +63,10 @@ services:
 #
 #  api-gateway:
 #    build: ms-gateway
-#    container_name: api-gateway
+#    container_name: ms-gateway
 #    restart: always
 #    depends_on:
 #      - bills-service
+#      - ms-users
 #    ports:
 #      - "8090:8090"
