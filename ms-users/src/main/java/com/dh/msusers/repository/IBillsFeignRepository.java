@@ -1,16 +1,16 @@
 package com.dh.msusers.repository;
 
-import com.dh.msusers.model.Claim;
+import com.dh.msusers.model.Bills;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "claim-service", url = "http://localhost:8083/")
-public interface IClaimFeignRepository {
+@FeignClient(name = "ms-bills", url = "lb://ms-bill")
+public interface IBillsFeignRepository {
 
-    @GetMapping("/{userId}")
-    List<Claim> getClaims(@PathVariable String userId);
+    @GetMapping("/bills/find-all/{customerBill}")
+    List<Bills> getBills(@PathVariable String customerBill);
 
 }

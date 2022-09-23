@@ -48,7 +48,7 @@ services:
 #    container_name: ms-users
 #    restart: always
 #    depends_on:
-#      - keycloak
+#      - bills-service
 #    ports:
 #      - "8084:8084"
 #

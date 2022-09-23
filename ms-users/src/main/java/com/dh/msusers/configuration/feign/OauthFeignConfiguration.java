@@ -14,6 +14,7 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 
 @Configuration
 public class OauthFeignConfiguration {
+
     private static final String KEYCLOAK_REGISTRATION_ID = "keycloak-registration";
 
     private final OAuth2AuthorizedClientService clientService;
@@ -45,4 +46,5 @@ public class OauthFeignConfiguration {
         auth2AuthorizedClientManager.setAuthorizedClientProvider(auth2AuthorizedClientProvider);
         return auth2AuthorizedClientManager;
     }
+
 }

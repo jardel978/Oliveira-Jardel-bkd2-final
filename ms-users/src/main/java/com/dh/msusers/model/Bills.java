@@ -9,12 +9,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Claim {
+public class Bills {
 
-    private String id;
-    private String motive;
-    private String status;
-    private String comments;
-    private String userId;
+    private String idBill;
+
+    private String customerBill;
+
+    private String productBill;
+
+    private Double totalPrice;
 
 }

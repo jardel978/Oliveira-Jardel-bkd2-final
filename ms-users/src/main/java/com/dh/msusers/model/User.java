@@ -1,22 +1,21 @@
 package com.dh.msusers.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldNameConstants;
 
 import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor()
 public class User {
 
     private String id;
     private String name;
     private String dni;
     private String email;
-    private List<Claim> claims;
+    private List<Bills> bills;
 
 }

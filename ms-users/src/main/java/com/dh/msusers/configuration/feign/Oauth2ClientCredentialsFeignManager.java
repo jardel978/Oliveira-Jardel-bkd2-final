@@ -59,4 +59,5 @@ public class Oauth2ClientCredentialsFeignManager {
         }
         return null;
     }
+
 }
