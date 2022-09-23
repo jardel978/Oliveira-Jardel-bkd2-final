@@ -28,9 +28,9 @@ spring:
           predicates:
             - Path=/users/**
         - id: ms-bill
-          uri: lb://ms-bill
+          uri: lb://ms-bills
           predicates:
-            - Path=/api/v1/**
+            - Path=/bills/**
           filters:
             - StripPrefix=2
   security:

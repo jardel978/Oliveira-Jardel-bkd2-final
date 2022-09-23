@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "ms-bills", url = "lb://ms-bill")
+@FeignClient(name = "ms-bills", url = "lb://ms-bills")
 public interface IBillsFeignRepository {
 
     @GetMapping("/bills/find-all/{customerBill}")
