@@ -1,6 +1,7 @@
 package com.dh.msusers.configuration.feign;
 
 import feign.RequestInterceptor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +16,7 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 @Configuration
 public class OauthFeignConfiguration {
 
-    private static final String KEYCLOAK_REGISTRATION_ID = "keycloak-registration";
+    private static final String KEYCLOAK_REGISTRATION_ID = "keycloak";
 
     private final OAuth2AuthorizedClientService clientService;
     private final ClientRegistrationRepository registrationRepository;

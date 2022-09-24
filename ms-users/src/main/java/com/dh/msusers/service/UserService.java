@@ -3,6 +3,7 @@ package com.dh.msusers.service;
 import com.dh.msusers.model.User;
 import com.dh.msusers.repository.IBillsFeignRepository;
 import com.dh.msusers.repository.IUserRepository;
+import com.dh.msusers.repository.KeycloakUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    private IUserRepository userRepository;
+    private KeycloakUserRepository userRepository;
 
     @Autowired
     private IBillsFeignRepository billsFeignRepository;

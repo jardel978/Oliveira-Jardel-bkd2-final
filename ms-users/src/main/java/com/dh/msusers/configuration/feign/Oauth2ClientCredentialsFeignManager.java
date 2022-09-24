@@ -41,7 +41,7 @@ public class Oauth2ClientCredentialsFeignManager {
     public String getAccessToken() {
         try {
             OAuth2AuthorizeRequest oAuth2AuthorizeRequest = OAuth2AuthorizeRequest
-                    .withClientRegistrationId(clientRegistration.getClientId())
+                    .withClientRegistrationId(clientRegistration.getRegistrationId())
                     .principal(principal)
                     .build();
 

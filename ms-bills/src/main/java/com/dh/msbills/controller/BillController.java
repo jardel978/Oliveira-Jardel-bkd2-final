@@ -14,20 +14,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/bills")
-@RequiredArgsConstructor
 public class BillController {
 
     @Autowired
-    private final BillService service;
+    private BillService service;
 
+//    @PreAuthorize("hasAnyRole('PROVIDER','READER')")
     @GetMapping("/find-all/{customerBill}")
-    @PreAuthorize("hasAnyAuthority('PROVIDER','READER')")
-    public ResponseEntity<List<Bill>> getAll(@PathVariable String customerBill) {
-        return ResponseEntity.ok().body(service.getAllBill(customerBill));
+    public List<Bill> getAll(@PathVariable String customerBill) {
+        return service.getAllBill(customerBill);
     }
 
+//    @RolesAllowed({"PROVIDER"})
     @PostMapping("/save")
-    @RolesAllowed({"PROVIDER"})
     public ResponseEntity<?> save(@RequestBody Bill bill) {
         service.save(bill);
         return new ResponseEntity<>("Dados salvos com sucesso", HttpStatus.CREATED);

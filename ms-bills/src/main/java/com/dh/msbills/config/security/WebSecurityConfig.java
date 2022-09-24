@@ -27,6 +27,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/bills/**").hasAnyRole("ROLE_PROVIDER")
+                .antMatchers(HttpMethod.GET, "/bills/find-all/**").hasAnyRole("ROLE_USER", "ROLE_PROVIDER",
+                        "ROLE_READER")
                 .anyRequest().authenticated();  // todas as requisições devem ser autenticadas
         http.oauth2ResourceServer()
                 .jwt()
@@ -34,8 +37,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.cors().and().csrf().disable();
     }
-
-    public static final String ADMIN = "ADMIN";
-    public static final String USER = "USER";
 
 }

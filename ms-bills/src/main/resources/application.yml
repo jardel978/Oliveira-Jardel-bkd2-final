@@ -3,14 +3,14 @@ server:
 
 spring:
   application:
-    name: ms-bill
+    name: ms-bills
   main:
     allow-circular-references: true
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/umReino/protocol/openid-connect/certs
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8080/realms/umReino/protocol/openid-connect/certs
 #          jwk-set-uri: http://localhost:8080/realms/umReino/protocol/openid-connect/certs  # url para validar token
 
   datasource:
@@ -35,7 +35,7 @@ spring:
 eureka:
   instance:
     hostname: localhost
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
