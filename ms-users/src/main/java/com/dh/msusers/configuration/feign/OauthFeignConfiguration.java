@@ -28,24 +28,28 @@ public class OauthFeignConfiguration {
     }
 
     @Bean
-    public RequestInterceptor requestInterceptors() {
+    public RequestInterceptor requestInterceptor() {
         ClientRegistration clientRegistration = registrationRepository.findByRegistrationId(KEYCLOAK_REGISTRATION_ID);
-        Oauth2ClientCredentialsFeignManager feignManager = new Oauth2ClientCredentialsFeignManager(auth2AuthorizedClientManager(), clientRegistration);
-
-        return requestTemplate -> requestTemplate.header("Authorization", "Bearer " + feignManager.getAccessToken());
-
+        Oauth2ClientCredentialsFeignManager credentialsFeignMananger =
+                new Oauth2ClientCredentialsFeignManager(authorizedClientManager(), clientRegistration);
+        return requestInterceptor -> {
+            requestInterceptor.header("Authorization", "Bearer " + credentialsFeignMananger.getAccessToken());
+        };
     }
 
     @Bean
-    public OAuth2AuthorizedClientManager auth2AuthorizedClientManager() {
-        OAuth2AuthorizedClientProvider auth2AuthorizedClientProvider = OAuth2AuthorizedClientProviderBuilder
-                        .builder().clientCredentials().build();
+    public OAuth2AuthorizedClientManager authorizedClientManager () {
+        OAuth2AuthorizedClientProvider authorizedClientProvider = OAuth2AuthorizedClientProviderBuilder
+                .builder()
+                .clientCredentials()
+                .build();
 
-        AuthorizedClientServiceOAuth2AuthorizedClientManager auth2AuthorizedClientManager =
+        AuthorizedClientServiceOAuth2AuthorizedClientManager authorizedClientManager =
                 new AuthorizedClientServiceOAuth2AuthorizedClientManager(registrationRepository, clientService);
 
-        auth2AuthorizedClientManager.setAuthorizedClientProvider(auth2AuthorizedClientProvider);
-        return auth2AuthorizedClientManager;
+        authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
+
+        return authorizedClientManager;
     }
 
 }

@@ -13,6 +13,10 @@ public class BillService {
 
     private final BillRepository repository;
 
+    public List<Bill> getAllBill() {
+        return repository.findAll();
+    }
+
     public List<Bill> getAllBill(String customerBill) {
         return repository.findAllByCustomerBill(customerBill).orElseThrow(() -> new RuntimeException("Erro ao buscar " +
                 "faturas."));

@@ -19,13 +19,17 @@ public class BillController {
     @Autowired
     private BillService service;
 
-//    @PreAuthorize("hasAnyRole('PROVIDER','READER')")
+    @GetMapping("/all")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<List<Bill>> getAll() {
+        return ResponseEntity.ok().body(service.getAllBill());
+    }
+
     @GetMapping("/find-all/{customerBill}")
     public List<Bill> getAll(@PathVariable String customerBill) {
         return service.getAllBill(customerBill);
     }
 
-//    @RolesAllowed({"PROVIDER"})
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody Bill bill) {
         service.save(bill);

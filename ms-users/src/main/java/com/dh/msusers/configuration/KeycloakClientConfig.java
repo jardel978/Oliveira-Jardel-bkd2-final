@@ -1,6 +1,5 @@
-package com.dh.msusers.runner;
+package com.dh.msusers.configuration;
 
-import lombok.RequiredArgsConstructor;
 import org.keycloak.OAuth2Constants;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.KeycloakBuilder;
@@ -10,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix = "keycloak")
+@ConfigurationProperties(prefix = "dh.keycloak")
 public class KeycloakClientConfig {
 
     @Value("${dh.keycloak.server-url}")

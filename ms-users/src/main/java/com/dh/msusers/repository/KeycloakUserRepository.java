@@ -21,8 +21,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class KeycloakUserRepository implements IUserRepository {
 
-    @Autowired
-    private Keycloak keycloak;
+    private final Keycloak keycloak;
 
     @Value("${dh.keycloak.realm}")
     private String realm;

@@ -59,7 +59,7 @@ management:
 
 info:
   name: Servico de roteamento (API Gateway) para os demais servicos presentes no ecossistema da aplicacao.
-  author: Nelson Kobayashi, Marcos Spano, Jardel Oliveira
+  author: Jardel Oliveira
   severity: Alto
 
 logging:
